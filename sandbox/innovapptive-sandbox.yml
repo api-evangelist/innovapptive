@@ -1,0 +1,71 @@
+generated: '2026-08-04'
+method: searched
+source: https://docs.innovapptive.com/2605/mRounds_configuration_guide/html/topics/api_keys_generate_prerequisites.html
+api: innovapptive:innovapptive-operator-rounds-api
+summary: >-
+  Innovapptive documents an interactive Swagger "Try it out" console for the
+  external Operator Rounds API and names three environment hosts (DEV / QA / PRD).
+  There is no self-service developer sandbox: every environment requires a
+  tenant-scoped API key issued by a CBO admin, and there are no published test
+  fixtures, test tenants, magic identifiers or seeded data. Recorded honestly with
+  the limitation that the console does not render for an anonymous visitor.
+console:
+  type: swagger-ui
+  documented_request_url: https://cwpuat2.innovapptive.com/operatorroundsapi/external/api-docs/
+  production_url: https://cbo.innovapptive.com/operatorroundsapi/external/api-docs/
+  flow_documented:
+  - Click Authorize
+  - Enter the API Key value in the Available Authorizations pop-up and click Authorize
+  - Expand the operation, click Try it out, supply tenantid and parameters, click Execute
+  auth_required: true
+  functional_anonymously: false
+  functional_note: >-
+    The console page returns HTTP 200 with the Swagger UI HTML shell (3106 bytes),
+    but the edge returns nginx 404 for ./swagger-ui-bundle.js,
+    ./swagger-ui-standalone-preset.js and ./swagger-ui-init.js, so the UI does not
+    render and no operation list is visible without whatever access unblocks those
+    assets. Probed on cbo, cboqa, cbodev and cwpuat2 — identical on all four.
+environments:
+- env: DEV
+  host: cbodev.innovapptive.com
+  reachable: true
+- env: QA
+  host: cboqa.innovapptive.com
+  reachable: true
+- env: PRD
+  host: cbo.innovapptive.com
+  reachable: true
+- env: UAT
+  host: cwpuat2.innovapptive.com
+  reachable: true
+  note: The host the documentation's Request URL points at.
+test_credentials:
+  self_service: false
+  issuance: >-
+    CBO admin generates a key in Tenant Management > (tenant) > API Keys, choosing
+    a 30/90/180/365-day expiry, and shares it with the customer.
+  expiry_options_days: [30, 90, 180, 365]
+test_data:
+  fixtures: none-published
+  magic_identifiers: none-published
+  test_clock: none
+  seeded_tenants: none-published
+  note: >-
+    The only concrete values in the docs are illustrative payload examples (a
+    roundPlanId UUID and Q1–Q6 task ids in the create-and-partially-execute
+    example). They are documentation examples, not vendor-supported test values,
+    and are deliberately not reproduced here as usable test data.
+product_demo:
+  url: https://www.innovapptive.com/connected-worker-platform/demo-login
+  note: Sales-led product demo access, not an API sandbox.
+x-evidence:
+  fetched: '2026-08-04'
+  urls:
+  - url: https://docs.innovapptive.com/2605/mRounds_configuration_guide/html/topics/api_keys_generate_prerequisites.html
+    http_status: 200
+  - url: https://cbo.innovapptive.com/operatorroundsapi/external/api-docs/
+    http_status: 200
+    content_type: text/html
+    size: 3106
+  - url: https://cbo.innovapptive.com/operatorroundsapi/external/api-docs/swagger-ui-init.js
+    http_status: 404

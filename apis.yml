@@ -1,8 +1,19 @@
 aid: innovapptive
 name: Innovapptive
-description: 'Innovapptive is a company surfaced via the API Evangelist harvest backlog (source: secondary-market)
-  and added to the network as a stub for full-pipeline profiling.'
+description: 'Innovapptive is a Houston-headquartered industrial software company whose
+  AI-first Connected Worker Platform (CWP) digitizes frontline work across maintenance,
+  operations, warehouse, EHS and continuous-improvement processes for asset-intensive
+  industries — oil and gas, chemicals, mining and metals, power generation and manufacturing.
+  The platform is built around deep, bi-directional integration with systems of record
+  (SAP ECC and S/4HANA, IBM Maximo, Oracle, Infor, PI and SCADA) through its no-code
+  Integration Manager and RACE configuration engine, and ships as product suites including
+  mWorkOrder, mInventory, mRounds / Operator Rounds, iMaintenance, iPermits, mAssetTag
+  and Digital Work Instructions. Its public developer surface is narrow: a documented
+  external Operator Rounds REST API on the CBO (Connected Business Operations) host,
+  secured with tenant-scoped API keys, plus a large Oxygen-published documentation estate
+  at docs.innovapptive.com covering every dated release train.'
 url: https://raw.githubusercontent.com/api-evangelist/innovapptive/refs/heads/main/apis.yml
+image: https://www.innovapptive.com/hubfs/innovapptive-logo.svg
 x-type: company
 x-source: harvest:secondary-market
 x-tier: stub
@@ -10,14 +21,126 @@ x-tier-reason: harvest
 specificationVersion: '0.20'
 created: '2026-08-04'
 modified: '2026-08-04'
+x-enrichment:
+  date: '2026-08-04'
+  status: enriched
+  artifacts_added: 11
+  pass: local-v1
 tags:
 - Company
-apis: []
+- Connected Worker
+- Industrial
+- Enterprise Asset Management
+- Maintenance
+- Operations
+- Warehouse
+- EHS
+- SAP
+- IBM Maximo
+- Mobile
+- Manufacturing
+- Oil and Gas
+- Field Service
+apis:
+- aid: innovapptive:innovapptive-operator-rounds-api
+  name: Innovapptive mRounds Operator Rounds External API
+  description: >-
+    The external Operator Rounds (mRounds) REST API on the Innovapptive Connected Business
+    Operations host. It lets a tenant programmatically list published round plans, read
+    a specific round plan with its tasks, create a round plan, and dynamically generate
+    and partially execute a round against a plan. Access is granted with a tenant-scoped
+    API key issued from the CBO Tenant Management module and passed in the x-api-key
+    request header alongside a tenantid parameter; the key cannot be used by Innovapptive's
+    own web or mobile clients, which use token-based authentication instead.
+  humanURL: https://docs.innovapptive.com/2605/mRounds_configuration_guide/html/topics/api_using_overview.html
+  baseURL: https://cbo.innovapptive.com/operatorroundsapi/external
+  tags:
+  - Operator Rounds
+  - Inspections
+  - Round Plans
+  - Connected Worker
+  properties:
+  - type: Documentation
+    url: https://docs.innovapptive.com/2605/mRounds_configuration_guide/html/topics/api_using_overview.html
+  - type: APIReference
+    url: https://cbo.innovapptive.com/operatorroundsapi/external/api-docs/
+  - type: GettingStarted
+    url: https://docs.innovapptive.com/2605/mRounds_configuration_guide/html/topics/api_keys_generate_prerequisites.html
+  - type: Authentication
+    url: authentication/innovapptive-authentication.yml
+  - type: ErrorCatalog
+    url: errors/innovapptive-problem-types.yml
+  - type: Conventions
+    url: conventions/innovapptive-conventions.yml
+  - type: Console
+    url: https://cbo.innovapptive.com/operatorroundsapi/external/api-docs/
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: DomainSecurity
+  url: security/innovapptive-domain-security.yml
 - type: Website
+  url: https://www.innovapptive.com
+- type: Documentation
+  url: https://docs.innovapptive.com/
+- type: APIReference
+  url: https://cbo.innovapptive.com/operatorroundsapi/external/api-docs/
+- type: GettingStarted
+  url: https://docs.innovapptive.com/2605/mRounds_configuration_guide/html/topics/api_keys_generate_overview.html
+- type: Support
+  url: https://helpdesk.innovapptive.com/
+- type: HelpCenter
+  url: https://docs.innovapptive.com/
+- type: Blog
+  url: https://www.innovapptive.com/blog
+- type: BlogRSS
+  url: https://www.innovapptive.com/blog/rss.xml
+- type: GitHubOrganization
+  url: https://github.com/Innovapptive
+- type: StatusPage
+  url: https://trust.innovapptive.com
+- type: Login
+  url: https://cbo.innovapptive.com/
+- type: SignUp
+  url: https://www.innovapptive.com/connected-worker-platform/demo-login
+- type: TermsOfService
+  url: https://www.innovapptive.com/terms-of-use
+- type: PrivacyPolicy
+  url: https://www.innovapptive.com/privacy-policy
+- type: ContactUs
+  url: https://www.innovapptive.com/company/contact-us
+- type: About
+  url: https://www.innovapptive.com/company/about-us
+- type: Training
+  url: https://academy.innovapptive.com/
+- type: LinkedIn
+  url: https://www.linkedin.com/company/innovapptive-inc
+- type: YouTube
+  url: https://www.youtube.com/user/Innovapptive
+- type: Twitter
+  url: https://twitter.com/innovapptive
+- type: SecondaryMarket
   url: https://www.hiive.com/securities/innovapptive-stock
+- type: Authentication
+  url: authentication/innovapptive-authentication.yml
+- type: ErrorCatalog
+  url: errors/innovapptive-problem-types.yml
+- type: Conventions
+  url: conventions/innovapptive-conventions.yml
+- type: Lifecycle
+  url: lifecycle/innovapptive-lifecycle.yml
+- type: ChangeLog
+  url: changelog/innovapptive-changelog.yml
+- type: Conformance
+  url: conformance/innovapptive-conformance.yml
+- type: Sandbox
+  url: sandbox/innovapptive-sandbox.yml
+- type: WellKnown
+  url: well-known/innovapptive-well-known.yml
+- type: LLMsTxt
+  url: llms/innovapptive-llms.txt
+- type: Packages
+  url: packages/innovapptive-packages.yml

@@ -1,0 +1,62 @@
+generated: '2026-08-04'
+method: searched
+source: https://docs.innovapptive.com/
+versioning:
+  scheme: dated-release-train
+  pattern: YYMM (with optional .NN / SPnn / HFnn suffixes)
+  current: '2607'
+  docs: https://docs.innovapptive.com/
+  note: >-
+    Innovapptive versions the PRODUCT, not the API path. Every release train is a
+    separate documentation namespace at docs.innovapptive.com/<train>/ — the
+    observed set runs 2003, 2006, 2009, 2103, 2106, 2109, 2112, 2201, 2203, 2206,
+    2208, 2209, 2212, 2301, 2302, 2304, 2309, 2401, 2402, 2403, 2404, 2408, 2501,
+    2502, 2503, 2504, 2505, 2506, 2507, 2508, 2509, 2510, 2511, 2512, 2601, 2603,
+    2604, 2605, 2607. The external Operator Rounds API path carries no version
+    segment.
+  api_path_versioned: false
+deprecation:
+  policy_url: null
+  policy_published: false
+  sunset_header: unknown
+  note: >-
+    No deprecation or sunset policy, no RFC 8594 Sunset/Deprecation header support,
+    and no end-of-life schedule for release trains were found on the site, the docs
+    estate, or the status page. Older trains simply stop receiving new guides. No
+    `Deprecation` pointer is emitted, because none is published.
+sla:
+  url: null
+  uptime_target: null
+  published: false
+status_page:
+  url: https://trust.innovapptive.com
+  platform: Atlassian Statuspage
+  page_id: hfpq4h333lyw
+  time_zone: Asia/Kolkata
+  api: https://trust.innovapptive.com/api/v2/summary.json
+  feeds:
+  - https://trust.innovapptive.com/history.atom
+  - https://trust.innovapptive.com/history.rss
+  components_observed:
+  - Operations
+  - Maintenance
+  note: >-
+    The page is titled "Trust Status" but is an operational status page, not a
+    trust/compliance center — no certifications are published on it. The
+    /.well-known/security.txt it serves is the Atlassian platform default, not
+    Innovapptive's.
+  verified: '2026-08-04'
+support:
+  helpdesk: https://helpdesk.innovapptive.com/
+  training: https://academy.innovapptive.com/
+  docs: https://docs.innovapptive.com/
+deprecated_operations: []
+x-evidence:
+  fetched: '2026-08-04'
+  urls:
+  - url: https://trust.innovapptive.com/api/v2/components.json
+    http_status: 200
+  - url: https://docs.innovapptive.com/llms.txt
+    http_status: 200
+  - url: https://www.innovapptive.com/security
+    http_status: 404

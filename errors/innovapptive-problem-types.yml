@@ -1,0 +1,82 @@
+generated: '2026-08-04'
+method: searched
+source: https://docs.innovapptive.com/2605/mRounds_configuration_guide/html/topics/error_codes.html
+docs:
+- https://docs.innovapptive.com/2605/mRounds_configuration_guide/html/topics/error_codes.html
+- https://docs.innovapptive.com/2503/mRounds_integration_guide/html/topics/error_codes.html
+api: innovapptive:innovapptive-operator-rounds-api
+format: plain
+format_note: >-
+  Not RFC 9457. Innovapptive publishes a flat status-code + message table for the
+  external Operator Rounds API; no problem+json media type, no `type` URI, no
+  machine-readable error code namespace. The message strings below are quoted
+  verbatim from the vendor's error-code reference.
+envelope:
+  documented: false
+  note: >-
+    The documentation names the HTTP status and the human message but does not
+    publish the JSON error body shape. Consumers must treat the message string as
+    the only discriminator.
+problems:
+- status: 200
+  title: Success
+  message: NA
+  scenario: When the successful response received
+- status: 401
+  title: Missing API key header
+  message: Request header (x-api-key) is missing
+  scenario: When the authorized API Key is not provided
+  remediation: >-
+    Send the tenant API key in the x-api-key request header. Keys are issued from
+    CBO > Tenant Management > API Keys.
+- status: 401
+  title: Invalid API key
+  message: Invalid API Key
+  scenario: When the provided key is invalid or incorrect
+  remediation: Re-copy the key from the CBO API Keys tab; keys are tenant-scoped.
+- status: 401
+  title: Expired API key
+  message: API Key Expired
+  scenario: When the key is expired
+  remediation: >-
+    Generate a new key. Expiry is chosen at issue time from 30, 90, 180 or 365
+    days; there is no self-service rotation endpoint.
+- status: 401
+  title: Unknown tenant
+  message: TenantId Test not found in db or cache
+  scenario: When the tenatid value is not provided
+  remediation: >-
+    Supply the tenantid created by Tenant Management. Note the vendor's table uses
+    a literal example tenant ("Test") inside the message.
+- status: 404
+  title: Round plan not found
+  message: Round plant id did not exist
+  scenario: When an incorrect roundPlantID is provided
+  remediation: >-
+    Fetch a valid id from the GET round-plans list operation before requesting
+    details or generating a round.
+- status: 500
+  title: Internal server error
+  message: Internal server error
+  scenario: When the server is not responded
+  remediation: Retry; escalate through helpdesk.innovapptive.com if persistent.
+also_documented:
+- status: 400
+  title: Bad request
+  source: https://docs.innovapptive.com/2605/mRounds_configuration_guide/html/topics/api_dynamically_generate_partially_execute_round.html
+  quote: >-
+    "if the API receives a bad request or the API_Key fails to validate, it returns
+    a response with the HTTP bad request status code"
+  note: >-
+    Referenced in prose on the dynamic-round-generation page but absent from the
+    error-code table — a real inconsistency in the published reference, recorded
+    rather than reconciled.
+gaps:
+- No RFC 9457 application/problem+json representation.
+- No stable machine-readable error codes; only HTTP status + English message.
+- No documented rate-limit (429) or authorization (403) responses.
+- Error body schema is not published.
+x-evidence:
+  fetched: '2026-08-04'
+  url: https://docs.innovapptive.com/2605/mRounds_configuration_guide/html/topics/error_codes.html
+  http_status: 200

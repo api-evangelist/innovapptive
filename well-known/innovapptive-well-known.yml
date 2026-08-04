@@ -1,0 +1,123 @@
+generated: '2026-08-04'
+method: probed
+source: live HTTP probes of every Innovapptive host reachable from apis.yml
+summary: >-
+  No Innovapptive host publishes any /.well-known/ discovery document. The apex
+  and docs hosts return a genuine 404 for every probed path. The CBO application
+  hosts (cbo/cboqa/cbodev) are single-page-application catch-alls that answer 200
+  with the same ~46KB HTML shell for EVERY path, including /.well-known/* and
+  /openapi.json — these are false positives and are recorded as such, not as hits.
+  The only 200 text/plain document found anywhere on the estate is
+  https://docs.innovapptive.com/llms.txt (saved verbatim to llms/).
+hosts:
+- host: www.innovapptive.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /security.txt
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+  - path: /llms.txt
+    status: 404
+  - path: /robots.txt
+    status: 200
+    note: robots.txt only; not a discovery document
+- host: docs.innovapptive.com
+  documents:
+  - path: /llms.txt
+    status: 200
+    content_type: text/plain
+    file: ../llms/innovapptive-llms.txt
+  - path: /llms-full.txt
+    status: 200
+    note: >-
+      3.1MB verbatim topic index. Fetched for reference but intentionally NOT
+      committed (see .gitignore `*-llms-full.txt`).
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+  - path: /openapi.json
+    status: 404
+  - path: /swagger.json
+    status: 404
+- host: cbo.innovapptive.com
+  note: >-
+    Connected Business Operations SPA (title "CWP"). Every unmatched path returns
+    HTTP 200 with the same ~46KB text/html application shell — a catch-all, not a
+    document. Treated as MISS on every probe below.
+  documents:
+  - path: /.well-known/agent-card.json
+    status: 200
+    content_type: text/html
+    hit: false
+    reject_reason: spa-catch-all-html
+  - path: /.well-known/security.txt
+    status: 200
+    content_type: text/html
+    hit: false
+    reject_reason: spa-catch-all-html
+  - path: /openapi.json
+    status: 200
+    content_type: text/html
+    hit: false
+    reject_reason: spa-catch-all-html
+- host: cboqa.innovapptive.com
+  note: same SPA catch-all behaviour as cbo.innovapptive.com
+  documents:
+  - path: /.well-known/agent-card.json
+    status: 200
+    content_type: text/html
+    hit: false
+    reject_reason: spa-catch-all-html
+- host: cbodev.innovapptive.com
+  note: same SPA catch-all behaviour as cbo.innovapptive.com
+  documents:
+  - path: /.well-known/agent-card.json
+    status: 200
+    content_type: text/html
+    hit: false
+    reject_reason: spa-catch-all-html
+- host: trust.innovapptive.com
+  note: >-
+    Atlassian Statuspage-hosted status page ("Trust Status"). It answers 200 for
+    /.well-known/security.txt, but the body is ATLASSIAN's own PGP-signed
+    security.txt (Contact security@atlassian.com, Canonical
+    https://www.atlassian.com/.well-known/security.txt) served by the Statuspage
+    platform. It is NOT an Innovapptive vulnerability-disclosure policy and is
+    deliberately not recorded as one.
+  documents:
+  - path: /.well-known/security.txt
+    status: 200
+    content_type: text/plain
+    hit: false
+    reject_reason: third-party-platform-default (atlassian.com)
+  - path: /api/v2/summary.json
+    status: 200
+    note: Statuspage public status API
+security_txt: none
+api_catalog: none
+oauth_metadata: none
+agent_card: none
+x-evidence:
+  fetched: '2026-08-04'
+  method: curl HEAD/GET with redirects followed, 15-30s timeouts

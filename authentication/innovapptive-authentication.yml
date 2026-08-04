@@ -1,0 +1,116 @@
+generated: '2026-08-04'
+method: searched
+source: >-
+  https://docs.innovapptive.com/2605/mRounds_configuration_guide/html/topics/api_using_overview.html
+docs:
+- https://docs.innovapptive.com/2605/mRounds_configuration_guide/html/topics/api_using_overview.html
+- https://docs.innovapptive.com/2605/mRounds_configuration_guide/html/topics/api_keys_generate_overview.html
+- https://docs.innovapptive.com/2605/mRounds_configuration_guide/html/topics/api_generate_key.html
+- https://docs.innovapptive.com/2605/mRounds_configuration_guide/html/topics/api_keys_generate_prerequisites.html
+note: >-
+  Derived from the published documentation, not from a machine-readable spec —
+  Innovapptive publishes a Swagger UI console for the external Operator Rounds API
+  but does not expose the underlying OpenAPI document anonymously (see
+  spec_discovery below).
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - header
+  oauth2_flows: []
+  openid_connect: false
+  mutual_tls: false
+schemes:
+- name: ApiKeyAuth
+  type: apiKey
+  in: header
+  parameter_name: x-api-key
+  description: >-
+    Tenant-scoped API key issued by the Innovapptive security module. The Swagger
+    console exposes it through the Authorize dialog ("enter the API Key value and
+    click Authorize"). A request without the header, or with an invalid/expired
+    key, is rejected with HTTP 401.
+  source: docs
+- name: TenantId
+  type: apiKey
+  in: header
+  parameter_name: tenantid
+  required: true
+  description: >-
+    Mandatory tenant discriminator accompanying every external Operator Rounds
+    request; the value is the Tenant ID created by CBO Tenant Management. A
+    missing/unknown value is rejected with HTTP 401 ("TenantId <x> not found in db
+    or cache"). Documented as a request parameter on every operation, so it is a
+    de-facto second credential dimension rather than an ordinary filter.
+  source: docs
+key_lifecycle:
+  issued_by: CBO application, Tenant Management module, API Keys tab
+  issued_during: tenant onboarding, or on customer request for programmatic access
+  issuer_role: CBO admin / Tenant Admin
+  fields:
+  - description
+  - expires
+  expiry_options_days:
+  - 30
+  - 90
+  - 180
+  - 365
+  rotation: >-
+    Keys are generated with a fixed expiry and revoked by deleting them from the
+    API Keys tab (More icon > Delete). No self-service developer key management is
+    published.
+  self_service: false
+scope_model:
+  scopes: none
+  note: >-
+    No OAuth2 scope surface is published for the external API. Authorization is
+    coarse — a key is bound to a tenant and to "the set of APIs identified as being
+    programmatically accessed by a tenant". Fine-grained access inside the product
+    is handled by CBO roles/permissions, not by API scopes.
+restrictions:
+- >-
+  API-key access is explicitly restricted to programmatic consumers. Innovapptive's
+  own web and mobile clients cannot use it — "If any application consumes the same
+  API, they should follow the traditional token-based authentication mechanism."
+other_auth_surfaces:
+- name: Token-based application authentication
+  applies_to: Innovapptive web and mobile clients (iMaintenance, iPermits, mRounds)
+  docs: https://docs.innovapptive.com/2607/imaintenance_configuration_guide/html/imaintenance_configuration_guide/topics/token_based_app_api_flow.html
+  note: Customer-configured; not an externally callable credential.
+- name: SAP BTP API Management OAuth 2.0
+  applies_to: >-
+    Customer-deployed SAP integration layer (OAuth token proxy, OAuth v2.0 policies
+    to generate and verify access tokens between an external consumer and BTP API
+    Management)
+  docs: https://docs.innovapptive.com/2607/imaintenance_deployment_setup_guide/html/imaintenance_deployment_setup_guide/topics/sap_oauth_api_proxy.html
+  note: >-
+    OAuth2 exists in Innovapptive's reference architecture, but it is configured in
+    the CUSTOMER's SAP BTP tenant. Innovapptive does not operate a public
+    authorization server, and no /.well-known/oauth-authorization-server or
+    /.well-known/openid-configuration was found on any Innovapptive host.
+spec_discovery:
+  openapi: not-published-anonymously
+  probes:
+  - url: https://cbo.innovapptive.com/operatorroundsapi/external/api-docs/
+    status: 200
+    result: Swagger UI HTML shell (3106 bytes)
+  - url: https://cbo.innovapptive.com/operatorroundsapi/external/api-docs-json
+    status: 404
+  - url: https://cbo.innovapptive.com/operatorroundsapi/external/v3/api-docs
+    status: 404
+  - url: https://cbo.innovapptive.com/operatorroundsapi/external/api-docs/swagger-ui-init.js
+    status: 404
+    note: >-
+      The Swagger UI shell references ./swagger-ui-bundle.js,
+      ./swagger-ui-standalone-preset.js and ./swagger-ui-init.js, but the edge
+      returns nginx 404 for all three, so the console does not render for an
+      anonymous visitor and the embedded document cannot be read.
+  - url: https://cwpuat2.innovapptive.com/operatorroundsapi/external/api-docs/
+    status: 200
+    result: same Swagger UI HTML shell (the Request URL named in the docs)
+x-evidence:
+  fetched: '2026-08-04'
+  http_status: 200
+  urls:
+  - https://docs.innovapptive.com/2605/mRounds_configuration_guide/html/topics/api_using_overview.html
+  - https://docs.innovapptive.com/2605/mRounds_configuration_guide/html/topics/api_generate_key.html

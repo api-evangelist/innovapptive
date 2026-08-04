@@ -1,0 +1,73 @@
+generated: '2026-08-04'
+method: searched
+source: https://docs.innovapptive.com/2605/mRounds_configuration_guide/html/topics/new_features_configurators.html
+docs:
+- https://docs.innovapptive.com/2605/mRounds_configuration_guide/html/topics/new_features_configurators.html
+- https://docs.innovapptive.com/2607/imaintenance_configuration_guide/html/imaintenance_configuration_guide/topics/new_features_configuration.html
+scheme: dated-release-train
+scheme_note: >-
+  Innovapptive has no single dated changelog page. Each product guide carries a
+  "What's New" topic that accumulates per-release tables, and each release train
+  gets its own documentation namespace. The entries below are the mRounds
+  Configurator "What's New" stack as published in the 2605 guide — the API's own
+  product line. Dates are NOT published on the page; the YYMM release code is the
+  only temporal marker and is recorded as `release`, with `date_inferred` flagging
+  that the calendar month is read from the code, not stated by the vendor.
+current_release: '2607'
+breaking_change_policy: not-published
+api_changelog: none
+api_changelog_note: >-
+  No changelog exists for the external Operator Rounds API specifically. The
+  "What's New" tables cover configurator/UI features; API surface changes are not
+  separately announced.
+entries:
+- release: '2603'
+  date_inferred: '2026-03'
+  breaking: []
+  additions:
+  - Establish a Connection with Maximo for Master Data Integration — sync Locations
+    and Assets from IBM Maximo into mRounds master data.
+  - Export attachment links from Rounds, Issues and Actions to SQL Server via the
+    existing ODBC connector.
+  - Automated alerts when ODBC data ingestion fails.
+- release: '2601'
+  date_inferred: '2026-01'
+  breaking: []
+  additions:
+  - Functional Location ID masking for SAP master-data sync.
+- release: '2512'
+  date_inferred: '2025-12'
+  breaking: []
+  additions:
+  - Coordinates and address for assets and locations (GPS-enabled mapping and
+    navigation to checkpoints).
+- release: '2504.02'
+  date_inferred: '2025-04'
+  breaking: []
+  additions:
+  - Custom configuration of Shift Handover Report formats per plant.
+- release: '2501'
+  date_inferred: '2025-01'
+  breaking: []
+  additions:
+  - Plant-level asset scanning control.
+  - SFTP export file gains Units and Positions columns.
+  - Bulk user creation from CSV/Excel for Tenant Admins.
+- release: '2408'
+  date_inferred: '2024-08'
+  breaking: []
+  additions:
+  - SFTP server downtime notifications for super admins.
+earlier_releases_listed:
+- '2401'
+- '2312'
+- '2311'
+- 2309 SP03
+- 2309 SP02
+- '2309'
+- '2306'
+- '2304'
+x-evidence:
+  fetched: '2026-08-04'
+  url: https://docs.innovapptive.com/2605/mRounds_configuration_guide/html/topics/new_features_configurators.html
+  http_status: 200

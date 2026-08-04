@@ -1,0 +1,128 @@
+generated: '2026-08-04'
+method: searched
+source: https://docs.innovapptive.com/2605/mRounds_configuration_guide/html/topics/api_using_overview.html
+api: innovapptive:innovapptive-operator-rounds-api
+scope: >-
+  Cross-cutting runtime semantics of the external Operator Rounds (mRounds) REST
+  API, read from Innovapptive's published integration/configuration guides. No
+  OpenAPI document is available anonymously, so every statement below is grounded
+  in prose documentation and is marked with the page it came from.
+auth:
+  style: api-key
+  header: x-api-key
+  tenant_header: tenantid
+  detail: authentication/innovapptive-authentication.yml
+idempotency:
+  supported: false
+  evidence: >-
+    No idempotency key, request-id replay header, or at-most-once guarantee is
+    documented for any external operation, including the two POST operations
+    (create round plan, create + partially execute round). Absence recorded as a
+    finding, not asserted as a feature.
+pagination:
+  style: limit-plus-cursor
+  operation: GET round-plans
+  params:
+  - name: limit
+    description: >-
+      Number of records to return. Defaults to 100 when omitted.
+    default: 100
+  - name: next
+    description: >-
+      Offset/continuation value for the next page. Vendor example: "if there are
+      100 records, the limit is set to 25, and if you want to get the next set of
+      25 records, you can provide the next value as 25."
+  response_fields: not-documented
+  source: https://docs.innovapptive.com/2605/mRounds_configuration_guide/html/topics/api_round_plans_list_get.html
+filtering:
+  operation: GET round-plans
+  params:
+  - name: tenantid
+    required: true
+    description: Tenant ID created by Tenant Management.
+  - name: plantid
+    description: Filter by plant.
+  - name: formStatus
+    description: Filter by form status, e.g. Draft or Published.
+  - name: searchTerm
+    description: Free-text filter, e.g. "Demo partial submission round".
+  default_behaviour: >-
+    With no query parameters the operation returns PUBLISHED round plans, limited
+    to 100 records.
+field_expansion:
+  supported: not-documented
+metadata:
+  supported: not-documented
+request_id_tracing:
+  supported: false
+  evidence: No correlation/request-id header is documented.
+versioning:
+  api_version_in_path: false
+  note: >-
+    The external API path carries no version segment
+    (/operatorroundsapi/external/...). Versioning is expressed at the PRODUCT level
+    through dated release trains (2003 … 2607) which are also the documentation
+    URL namespace. See lifecycle/innovapptive-lifecycle.yml.
+error_envelope:
+  format: plain
+  detail: errors/innovapptive-problem-types.yml
+rate_limiting:
+  documented: false
+  headers: none-documented
+data_types:
+  note: >-
+    Dynamic round generation supports only five task response types — Text Answer,
+    Number, Date Range, Date & Time, and Photo.
+  encoding:
+    images: base64
+    date_time: ISO 8601 string
+    date_range: two ISO 8601 strings separated by ';'
+  source: https://docs.innovapptive.com/2605/mRounds_configuration_guide/html/topics/api_round_create_partially_execute.html
+environments:
+  documented_hosts:
+  - env: DEV
+    host: cbodev.innovapptive.com
+  - env: QA
+    host: cboqa.innovapptive.com
+  - env: PRD
+    host: cbo.innovapptive.com
+  console_request_url: https://cwpuat2.innovapptive.com/operatorroundsapi/external/api-docs/
+  source: https://docs.innovapptive.com/2605/mRounds_configuration_guide/html/topics/api_keys_generate_prerequisites.html
+operations_documented:
+- method: GET
+  path: /round-plans
+  summary: List round plans (filterable, paginated)
+- method: GET
+  path: /round-plans/{roundPlanId}
+  summary: Get a round plan with its tasks, location- or asset-wise
+- method: POST
+  path: /round-plans
+  summary: Create a round plan from a header/pages/sections/tasks payload
+- method: POST
+  path: /rounds
+  summary: >-
+    Create a round from a roundPlanId and partially execute it by supplying
+    pre-filled task values
+  note: >-
+    Paths are reconstructed from the vendor's Swagger-console instructions ("Expand
+    the Get method with round-plans", "Expand the Get method with roundPlanId",
+    "Expand the Post method with rounds") and the published request bodies. They
+    are documentation-grounded, NOT harvested from a spec, and the exact path
+    templates should be confirmed against the provider's OpenAPI once it is
+    published.
+spec_discovery:
+  openapi: not-published-anonymously
+  graphql: none-found
+  mcp: none-found
+  asyncapi: none-found
+  agent_card: none-found
+  detail: see authentication/innovapptive-authentication.yml#spec_discovery
+gaps:
+- No published OpenAPI/Swagger document (console shell only; assets and JSON 404).
+- No idempotency semantics.
+- No rate-limit signalling.
+- No request-id / correlation header.
+- No pagination response-field contract (only request-side params).
+x-evidence:
+  fetched: '2026-08-04'
+  http_status: 200

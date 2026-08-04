@@ -1,0 +1,58 @@
+generated: '2026-08-04'
+method: searched
+source: public package-registry and source-repository searches
+result: none
+summary: >-
+  Innovapptive publishes no first-party client libraries, SDKs or CLIs in any
+  public package registry, and no public source repositories. This is a searched
+  negative, recorded as evidence — not an unexamined gap. No `SDKs` or `CLI`
+  pointer is emitted because there is nothing to point at.
+packages: []
+registries_searched:
+- registry: npm
+  query: innovapptive
+  results: 0
+  url: https://www.npmjs.com/search?q=innovapptive
+- registry: pypi
+  query: innovapptive
+  results: 0
+  url: https://pypi.org/pypi/innovapptive/json
+  http_status: 404
+- registry: maven-central
+  query: innovapptive
+  results: 0
+- registry: nuget
+  query: innovapptive
+  results: 0
+  http_status: 404
+- registry: rubygems
+  query: innovapptive
+  results: 0
+- registry: pkg.go.dev
+  query: innovapptive
+  results: 0
+- registry: packagist
+  query: innovapptive
+  results: 0
+- registry: crates.io
+  query: innovapptive
+  results: 0
+source_repositories:
+- org: https://github.com/Innovapptive
+  type: organization
+  public_repos: 0
+  note: Official GitHub organization exists but publishes nothing.
+- account: https://github.com/InnovapptiveInc
+  type: user
+  public_repos: 1
+  repos:
+  - name: Innovapptive
+    url: https://github.com/InnovapptiveInc/Innovapptive
+    note: GitHub profile README repository only — no code, no client library.
+  website: https://www.innovapptive.com/
+- note: >-
+    All other GitHub matches for "innovapptive" are unaffiliated personal
+    repositories (interview tests, training exercises) and are not first-party.
+docs_sdk_pages: none
+x-evidence:
+  fetched: '2026-08-04'
