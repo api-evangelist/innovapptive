@@ -13,6 +13,17 @@ description: 'Innovapptive is a Houston-headquartered industrial software compan
   secured with tenant-scoped API keys, plus a large Oxygen-published documentation estate
   at docs.innovapptive.com covering every dated release train.'
 url: https://raw.githubusercontent.com/api-evangelist/innovapptive/refs/heads/main/apis.yml
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: false
+  label: Hosted service · you call their endpoint
+  confidence: medium
+  source:
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 image: https://www.innovapptive.com/hubfs/innovapptive-logo.svg
 x-type: company
 x-source: harvest:secondary-market
