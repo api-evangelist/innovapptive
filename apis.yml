@@ -95,6 +95,11 @@ apis:
   baseURL: https://cbo.innovapptive.com/operatorroundsapi/external
   tags:
   - Operator Rounds
+  - Inspection
+  - Round Plans
+  - Connected Worker
+  tags_raw:
+  - Operator Rounds
   - Inspections
   - Round Plans
   - Connected Worker
