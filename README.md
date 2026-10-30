@@ -64,5 +64,94 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Innovapptive is a company surfaced via the API Evangelist harvest backlog (source: secondary-market) and added to the network as a stub for full-pipeline profiling.
-- https://www.hiive.com/securities/innovapptive-stock
+Innovapptive is a Houston-headquartered industrial software company whose AI-first Connected Worker Platform (CWP) digitizes frontline work across maintenance, operations, warehouse, EHS and continuous-improvement processes for asset-intensive industries — oil and gas, chemicals, mining and metals, power generation and manufacturing. The platform is built around deep, bi-directional integration with systems of record (SAP ECC and S/4HANA, IBM Maximo, Oracle, Infor, PI and SCADA) through its no-code Integration Manager and RACE configuration engine, and ships as product suites including mWorkOrder, mInventory, mRounds / Operator Rounds, iMaintenance, iPermits, mAssetTag and Digital Work Instructions. Its public developer surface is narrow: a documented external Operator Rounds REST API on the CBO (Connected Business Operations) host, secured with tenant-scoped API keys, plus a large Oxygen-published documentation estate at docs.innovapptive.com covering every dated release train.
+
+**Areas:** Company · Connected Worker · Industrial · Enterprise Asset Management · Maintenance · Warehouse · EHS · SAP · IBM Maximo · Mobile · Manufacturing · Oil and Gas
+
+## Innovapptive on APIs.io
+
+Everything profiled for Innovapptive is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/innovapptive/](https://apis.io/providers/innovapptive/)** — or go straight to one of the APIs or properties below.
+
+### APIs (1)
+
+- [Innovapptive mRounds Operator Rounds External API](https://apis.io/apis/innovapptive/innovapptive-operator-rounds-api/) — The external Operator Rounds (mRounds) REST API on the Innovapptive Connected Business Operations host. It lets a tenant programmatically list published…
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Innovapptive Authentication](https://apis.io/security/innovapptive/innovapptive-authentication/)
+- [Innovapptive Domain Security](https://apis.io/security/innovapptive/innovapptive-domain-security/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.innovapptive.com)
+- [Documentation](https://docs.innovapptive.com/)
+- [Getting started](https://docs.innovapptive.com/2605/mRounds_configuration_guide/html/topics/api_keys_generate_overview.html)
+- [API reference](https://cbo.innovapptive.com/operatorroundsapi/external/api-docs/)
+- [Sign up](https://www.innovapptive.com/connected-worker-platform/demo-login)
+- [Support](https://helpdesk.innovapptive.com/)
+- [Blog](https://www.innovapptive.com/blog)
+- [Terms of service](https://www.innovapptive.com/terms-of-use)
+- [Privacy policy](https://www.innovapptive.com/privacy-policy)
+- [GitHub](https://github.com/Innovapptive)
+- [Status](https://trust.innovapptive.com)
+
+## API Evangelist rating
+
+**Kin Score 31.2** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 73.2 |
+| Contract quality | 0.0 |
+| Contract governance | 4.5 |
+| Operational transparency | 34.2 |
+| Developer ergonomics | 54.8 |
+| Access clarity | 34.2 |
+
+**Agent readiness 5.4** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | — |
+| Agentic Access | — |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | documented (partial credit) |
+| OpenAPI Examples | — |
+| Rate Limit Signal | — |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 20.5** — Energy & Utilities
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/innovapptive/](https://apis.io/providers/innovapptive/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Innovapptive: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/innovapptive/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
